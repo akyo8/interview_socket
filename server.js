@@ -1,11 +1,16 @@
-const io = require('socket.io')();
+const httpServer = require('http')
+	.createServer((req, res) => {
+		// serve the index.html file
+	})
+	.listen(4000);
+const io = require('socket.io')(httpServer);
 
 let webSocket = io.on('connection', (socket) => {
 	console.log(`connect: ${socket.id}`);
 
-	socket.on('hello', () => {
-		console.log(`hello from ${socket.id}`);
-	});
+	// socket.on('hello', () => {
+	// 	console.log(`hello from ${socket.id}`);
+	// });
 
 	socket.on('from-mobile-app', (data) => {
 		try {
@@ -20,9 +25,3 @@ let webSocket = io.on('connection', (socket) => {
 		console.log(`disconnect: ${socket.id}`);
 	});
 });
-
-io.listen(4000);
-
-setInterval(() => {
-	io.emit('message', new Date().toISOString());
-}, 1000);
