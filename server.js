@@ -2,7 +2,7 @@ const httpServer = require('http')
 	.createServer((req, res) => {
 		// serve the index.html file
 	})
-	.listen(4000);
+	.listen(3000);
 const io = require('socket.io')(httpServer, { origins: '*:*' });
 
 let webSocket = io.on('connection', (socket) => {
