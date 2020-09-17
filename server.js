@@ -3,7 +3,7 @@ const httpServer = require('http')
 		// serve the index.html file
 	})
 	.listen(4000);
-const io = require('socket.io')(httpServer);
+const io = require('socket.io')(httpServer, { origins: '*:*' });
 
 let webSocket = io.on('connection', (socket) => {
 	console.log(`connect: ${socket.id}`);
