@@ -8,10 +8,6 @@ const io = require('socket.io')(httpServer, { origins: '*:*' });
 let webSocket = io.on('connection', (socket) => {
 	console.log(`connect: ${socket.id}`);
 
-	// socket.on('hello', () => {
-	// 	console.log(`hello from ${socket.id}`);
-	// });
-
 	socket.on('from-mobile-app', (data) => {
 		try {
 			console.log(data);
